@@ -183,6 +183,30 @@ div.small{
     background-color: #616161 !important;
 }
 
+/* Payload section styles */
+.send-payload-button.mdl-button--colored {
+    background-color: #4CAF50 !important;
+    width: 100%;
+}
+
+.send-payload-button.mdl-button--colored:hover {
+    background-color: #45a049 !important;
+}
+
+#payloadInput {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #757575;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+#targetCharacteristic {
+    width: 100%;
+}
+
 /* Dark mode overrides for Material Design Lite */
 .mdl-dialog {
     background: #1e1e1e;
