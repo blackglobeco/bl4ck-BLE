@@ -23,6 +23,21 @@ function onDisconnected() {
     
     theServer = null;
     theDevice = null;
+    
+    // Reopen the connection dialog
+    const dialogElement = document.querySelector('dialog');
+    if (dialogElement) {
+        dialogElement.showModal();
+    }
+    
+    // Show notification
+    var notification = document.querySelector('.mdl-js-snackbar');
+    notification.MaterialSnackbar.showSnackbar(
+        {
+            message: 'Device disconnected',
+            timeout: 2000
+        }
+    );
 }
 
 function connect() {
