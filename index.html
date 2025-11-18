@@ -57,6 +57,39 @@
                         </div>
 
                         <div class="mdl-cell mdl-cell--12-col">
+                            <div class="boxer">
+                                <div class="title">
+                                    <h3>Payload Commander</h3>
+                                </div>
+                                <div class="twenty-px">
+                                    <p style="color: #b0b0b0; font-size: 0.9em;">Send commands to writable BLE characteristics</p>
+                                    
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
+                                        <select class="mdl-textfield__input" id="targetCharacteristic" style="background: #2a2a2a; color: #e0e0e0; padding: 8px; border: 1px solid #757575;">
+                                            <option value="">Select writable characteristic...</option>
+                                        </select>
+                                        <label class="mdl-textfield__label">Target Characteristic</label>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield" style="width: 100%;">
+                                        <textarea class="mdl-textfield__input" type="text" rows="6" id="payloadInput" 
+                                            placeholder="Enter payload commands (one per line)&#10;Example:&#10;STRING Hello World&#10;ENTER&#10;DELAY 1000"></textarea>
+                                        <label class="mdl-textfield__label" for="payloadInput">Payload Commands</label>
+                                    </div>
+
+                                    <button type="button" id="sendPayloadBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored send-payload-button">
+                                        <i class="material-icons">send</i> Send Payload
+                                    </button>
+
+                                    <div id="payloadStatus" style="margin-top: 15px; padding: 10px; background: #2a2a2a; border-radius: 4px; display: none;">
+                                        <div style="color: #4CAF50; font-weight: bold;">Status:</div>
+                                        <div id="payloadStatusText" style="color: #e0e0e0; font-family: monospace; font-size: 0.85em;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col">
                             <button type="button" class="disconnect-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                                 <i class="material-icons">bluetooth_disabled</i> Disconnect
                             </button>
