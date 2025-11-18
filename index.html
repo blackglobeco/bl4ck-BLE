@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+    <head>
+        <title>BLE Scanner</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="manifest" href="manifest.json" />
+
+        <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="app-layout mdl-layout mdl-js-layout">
+            <main class="mdl-layout__content">
+                <div class="mdl-grid">
+                    <div id="dashboard" class="hidden dashboard-container">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <div class="boxer">
+                                <div class="title">
+                                    <h3>Connected Device Information</h3>
+                                </div>
+                                <div class="twenty-px">
+                                    <table class="mdl-data-table mdl-js-data-table device-info-table">
+                                        <tbody>
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric"><strong>Device Name:</strong></td>
+                                                <td class="mdl-data-table__cell--non-numeric" id="deviceName">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric"><strong>Device ID:</strong></td>
+                                                <td class="mdl-data-table__cell--non-numeric" id="deviceId">-</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric"><strong>Connected:</strong></td>
+                                                <td class="mdl-data-table__cell--non-numeric" id="deviceConnected">-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <div class="boxer">
+                                <div class="title">
+                                    <h3>Services & Characteristics</h3>
+                                </div>
+                                <div class="twenty-px">
+                                    <div id="servicesContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <button type="button" class="disconnect-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                <i class="material-icons">bluetooth_disabled</i> Disconnect
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <dialog class="mdl-dialog">
+            <h4 class="mdl-dialog__title">Connect</h4>
+            <div class="mdl-dialog__content">
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="optionalServices" placeholder="Bluetooth Services (e.g. generic_access, 0x1234)" required=true value="0000180a-0000-1000-8000-00805f9b34fb"/>
+                    <label class="mdl-textfield__label" for="optionalServices">Services</label>
+                    <span class="mdl-textfield__error">Required</span>
+                </div>
+
+                <div id = "progressbar" class = "mdl-progress mdl-js-progress mdl-progress__indeterminate hidden"></div>
+                
+                <div class="mdl-dialog__actions mdl-dialog__actions--full-width ">
+                    <button type="button" class="connect-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        <i class="material-icons">bluetooth</i> Connect
+                    </button>
+                </div>
+            </div>
+            
+        </dialog>
+
+        <div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button type="button" class="mdl-snackbar__action"></button>
+            </div>
+        <script src="app.js"></script>
+
+        <script>
+            var dialog = document.querySelector('dialog');
+            var showModalButton = document.querySelector('.show-modal');
+            if (! dialog.showModal) {
+                dialogPolyfill.registerDialog(dialog);
+            }
+            dialog.querySelector('.connect-button').addEventListener('click', function() {
+                //dialog.close();
+                connect();
+            });
+    
+            dialog.showModal();
+        </script>
+    </body>
+</html>
